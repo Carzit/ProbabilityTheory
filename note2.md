@@ -1,3 +1,102 @@
+# 2 离散概型
+具有可数个基本事件的试验的概率模型, 称为离散概型; 离散概型中, 如果样本点只是有限个, 则称为有限概型; 有限概型中, 如果各样本点出现的概率相等, 则称为古典概型。
+
+## 2.1 古典概型
+### 2.1.1
+一个试验, 如果有$n$个可能的结果, 而每个结果出现的可能性都是$\frac1n$ , 则称为古典概率模型, 简称古典概型.
+
+我们将用$\omega_1, ... , \omega_n$表示这些结果, 用$\Omega$表示它们全体：
+$$ \Omega := \{ \omega_1, ... , \omega_n \}$$  
+用$P(\omega_i)$表示$\omega_i$出现的概率(即可能性), 即
+$$P (\omega_i) = \frac1n , \forall i = 1, ... , n$$
+
+### 2.1.2
+设掷一枚均匀硬币, 用1表示出现正面, 0表示出现反面. 则
+$$\Omega = \{0, 1\}, P (i) = \frac12 , i = 0, 1$$
+这个模型称为Bernoulli概型, 这个试验称为Bernoulli试验.
+
+设一枚均匀硬币掷n次, 还是用1表示出现正面, 0表示出现反面. 则
+$$ \Omega = \{(i_1, i_2, ... , i_n), i_k = 0, 1, \forall k = 1, 2, ... , n\}, P((i_1, i_2, ... , i_n)) = 2^{−n}, \forall (i1, i2, · · · , in) \in \Omega $$
+这个模型称为n重Bernoulli概型, 或依旧简称为Bernoulli概型. 这个试验称为n重Bernoulli试验. 
+
+因为每个结果都是等可能的, 所以对事件$A \subset \Omega$, 定义$A$发生的概率为
+$$P (A) := \frac{N(A)}{N (\Omega)} $$
+其中$N(A)$表示集合$A$中的元素个数. 称$N(A)$为有利事件的样本点数, $N(Ω)$为总样本点数.
+
+这样定义的概率有如下性质:
+- $\forall A \subset \Omega, 0 \leqslant P (A) \leqslant 1$
+- $ P(\Omega) = 1, P(\emptyset) = 0 $
+- 设$ m \in N^+$, 且$\forall i = 1, ... , m, A_i \subset \Omega $且两两不交. 令$A := \sum_{i=1}^{m}A_i$, 则有加法公式$P(A) = \sum_{i=1}^{m}P(A_i)$  
+
+古典概型从理论上讲是简单的, 关键是要计算$P(A)$, 这就归结为计算$N(A)$与$N(Ω)$. 从而古典概型的问题其实就是计数问题. 这个问题看起来简单, 但在具体问题中计算却可能十分困难.
+当问题太复杂, 一时不能直接计算$N(A)$时, 有一个简单而往往相当实用的方法, 即, 可以考虑把A分成几部分,比如
+$$A = A_1 + A_2 + ... + A_m$$
+然后分别计算$N(A_i)$. 
+由于
+$$N(A) = N(A_1) + N(A_2) + ... + N(A_m)$$
+所以由此可计算出N (A). 我们将这个方法称为加法原理.
+
+### 2.1.3
+无放回有顺序抽样:
+> 从$/{1, 2, ... , n/}$中取出$m(\leqslant n)$个数, 依取出的顺序排列, 问一共有多少结果
+$$A_n^m = \frac{n!}{(n-m)!}$$
+
+有放回有顺序抽样:
+> 从$/{1, 2, ... , n/}$中取出一个, 记录下号码, 放回, 再取出一个记录下号码, 再放回. 如此重复$m$次. 问一共有多少种不同的结果.
+$$B_n^m = n^m$$
+
+无放回无顺序抽样:
+> 从$/{1, 2, ... , n/}$中取出$m(\leqslant n)$个数, 不计顺序, 问一共有多少结果
+$$C_n^m = \frac{n!}{m!(n-m)!}$$
+
+有放回无顺序抽样:
+> 从$/{1, 2, ... , n/}$中取出一个, 记录下号码, 放回, 再取出一个记录下号码, 再放回. 如此重复$m$次. 但最后记录下的结果不计顺序. 问一共有多少种不同的结果.
+$$D_n^m = C_{n+m-1}^m$$
+
+## 2.2 有限概型
+### 2.2.1
+所谓有限概型, 其特点是试验只有有限个结果(这和古典概型一样), 但每个结果出现的概率不必一样.  
+
+设一个试验可能的结果有$n$个:
+$$\Omega = \{\omega_1, ... , \omega_n\}$$
+设$\omega_i$出现的概率为$p_i$, $p_i > 0, \forall i = 1, ... , n$, $\sum_{i=1}^{n}p_i = 1$. 令
+$$P(\omega_i) := p_i$$
+而对任意$A \subset \Omega$, 令
+$$P(A) := \sum_{\omega \in A} P(\omega)$$
+则$(\Omega, P)$称为有限概型, 称$P(A)$为事件$A$的概率.
+
+### 2.2.2
+掷一枚可能未必均匀的硬币, 仍然用1表示出现正面, 0表示出现反面. 此时仍有
+$$\Omega = {0, 1}$$
+但
+$$P(1) = p, P(0) = q, p, q > 0, p + q = 1$$
+这个模型也称为Bernoulli概型.  
+
+将上面那枚硬币掷n次, 则样本空间为
+$$\Omega := \{(i_1, i_2, · · · , i_n), i_k = 0, 1, \forall k = 1, 2, ... , n\}$$
+令
+$$P((i_1, i_2, ... , i_n)) := p^{\sum_{k=1}^{n}i_k}q^{n−\sum_{k=1}^{n}i_k}, \forall (i_1, i_2, ... , i_n)$$
+这个模型仍然称为n重Bernoulli概型, 或称为**二项概型**.
+
+如果把硬币换为(未必均匀的)骰子, 那么每次可能出现的结果就不是两个而是六个.
+此时可取
+$$\Omega := {\omega = (\omega_1, ... , \omega_n) : \omega_i \in \{1, 2, ..., 6\}}, P(\omega) := \prod_{k=1}^{6}{p_k}^{\alpha_k(\omega)}$$
+其中
+$p_k > 0, \sum_{i=1}^{6}p_k = 1, α_k(\omega) = \sum_{i=1}^{n}\delta_{k,\omega_i}$, 即$\alpha_k(\omega)$是$\omega$的分量中等于$k$的个数.  
+这个模型称为**多项概型**.
+
+### 2.2.3
+
+虽然不再是古典概型, 但由定义可以看出, 有限概型中的概率仍然保留有以下古典概率
+所具有的基本性质:  
+
+- $\forall A, 0 \leqslant P(A) \leqslant 1$
+- $P(\Omega) = 1, P (\emptyset) = 0$
+- 单调性: $A \subset B \Rightarrow P(A) \leqslant P(B)$
+- 有限可加性: $\forall k$及$A_1, ... , A_k$, 若$A_iA_j = \emptyset$, $\forall i \neq j$, 则有加法公式
+$$ P(\sum_{i=1}^{k}A_i) = \sum_{i=1}^{k}P(A_i)$$
+
+
 ## 2.3 随机变量
 
 ### 2.3.1
@@ -190,6 +289,7 @@ $$
 $$
     \mathbb{E}[\xi] =\mathbb{E}[\mathbb{E}[\xi \mid \mathscr{P}]]
 $$
+这里讲得比较书卷气，可以参考2.9节的说法。
 
 ## 2.6 独立性
 
@@ -258,12 +358,12 @@ $$
 $$
 这就引导我们考虑更一般的问题: 在什么情况下可由两个集类的独立性推出更大的集类的独立性? 看来交集在这里会起到关键的作用. 为准确地回答这个问题, 我们需要准备一些集类方面的知识.  
 
-### 2.7 集合论：$\pi$-类, $\lambda_0$-类与代数
+## 2.7 集合论：$\pi$-类, $\lambda_0$-类与代数
 
 我们曾经定义了事件间的各种运算. 本节我们定义对其中一些运算封闭的集类, 并讨论其基本性质. 我们将证明所谓的$\pi − \lambda_0$定理. 这个定理是后面要讲的$\pi − \lambda$定理的初级形式, 且前者的证明已经包含了后者的证明中最困难的部分.  
 我们固定一个样本空间$\Omega$, 考虑在各种运算下封闭的集类.  
 
-#### 2.7.1 $\pi$-类
+### 2.7.1 $\pi$-类
 
 > 一个非空集类$\mathscr{P}$, 若对交封闭, 即满足
 > $$A, B \in \mathscr{P} \Rightarrow AB \in P$$
@@ -276,7 +376,7 @@ $$
 - 设 $\Omega = [0, 1)$, $\mathscr{P} := \{[0, a), a \in [0, 1]\}$, 则$\mathscr{P}$是$\pi$-类.  
 - 设 $\Omega = \mathbb{R}^n$, $\mathscr{P} := \{[a_1, b_1) \times \dots [an, bn), −\infty < a_i \leqslant b_i < \infty, \forall i = 1, \dots , n\}$. 则$\mathscr{P}$是$\pi$-类.
 
-#### 2.7.2 $\lambda_0$-类
+### 2.7.2 $\lambda_0$-类
 
 > 一个集类$\mathscr{L}_0$, 若包含$\Omega$且对真差封闭, 即满足
 > $$ A, B \in \mathscr{L}_0, A \subset B \Rightarrow B − A \in \mathscr{L}_0 $$
@@ -308,7 +408,7 @@ $$B^c + A \in \mathscr{L}_0$$
 $$B − A = (B^c + A)^c \in \mathscr{L}_0$$
 证完.
 
-#### 2.7.3 代数
+### 2.7.3 代数
 
 因此, 我们可将$\lambda_0$-类理解为含有$\Omega$且对不交并与余封闭的集类. 若去掉“不交”的限制, 加强为对任意两个集合的并封闭, 则得到代数的概念.
 
@@ -349,7 +449,7 @@ $$B \setminus A = BA^c \in \mathscr{A}$$
 
 由此我们也可以认为, 比之于代数, $\lambda_0$-类差的就是对交封闭. 
 
-#### 2.7.4 $\pi$ - $\lambda_0$ 定理
+### 2.7.4 $\pi$ - $\lambda_0$ 定理
 
 我们下面将要证明本节最重要的结果, 即从一个$\pi$-类出发扩张而得到的$\lambda_0$-类依然保留对交封闭这个重要的性质, 因此也就一定是代数. 为此先引入两个概念.  
 > 任给一个非空集类$\mathscr{D}$, 一定存在一个代数$\mathscr{A_0}$, 使得对任意代数$\mathscr{A} \supset \mathscr{D}$, 都有
@@ -397,9 +497,9 @@ $$\mathscr{B}_1 = \lambda_0(\mathscr{C})$$
 $$ \mathscr{B}_2 := \{B \in \lambda_0(\mathscr{C}) : BA \in \lambda_0(\mathscr{C}), \forall A \in  \lambda_0(\mathscr{C}) \}$$  
 由刚刚证明的结论, 有$\mathscr{C} \subset \mathscr{B}_2$. 再将刚刚用的证明方法如法泡制, 可证 B2为λ0-类. 因此$\mathscr{B}_2 = \lambda_0(\mathscr{C})$, 而这就是说$\lambda_0(\mathscr{C})$是$\pi$-类.
 
-### 2.8 重温独立性
+## 2.8 重温独立性
 
-#### 2.8.1
+### 2.8.1
 
 现在可以回答前面的问题了,即是否可以从较小的事件类间的独立性推出较大的事件类
 间的独立性的问题.我们有:
@@ -419,7 +519,7 @@ $$\mathscr{A} := \{ A \in \alpha(\mathscr{C}_1): A与B独立, \forall B \in \alp
 用同样的方法可证$\mathscr{A} = \alpha(\mathscr{C}_1)$.  
 这就证明了任取$A \in \alpha(\mathscr{C}_1), B \in \alpha(\mathscr{C}_2)$, $A$与$B$都是独立的.  
 
-#### 2.8.2
+### 2.8.2
 
 前面定义了两个事件、两个集类的独立. 自然地要问, 该如何定义三个事件、多个事件
 独立, 以及多个集类的独立呢? 下面就是定义.  
@@ -449,16 +549,15 @@ $$P(ABC) \neq P(AB)P(C)$$
 $$P(ABC) = P(A)P(B)P(C)$$
 但不独立的三个事件——例如,考虑其中一个为空集的情形.  
 
-### 2.9 可列概型
+## 2.9 可列概型
 
-#### 2.9.1
 本节我们将考虑可列概型. 和有限概型相比, 不同之处就是样本空间中样本点的个数是可列个的, 我们主要关注它们的不同之处.  
 例如,考虑n重Bernoulli概型$B(n,p)$. 以$\xi$表示成功的次数. 我们知道
 $$P(\xi = k) = C_{n}^{k}p^{k}q^{n−k}$$
 
 问题在于实际计算中, 只要n稍微大一点, 计算量就非常惊人. 因此人们就设法找一些近似计算方法. 就找到了一个后来证明是非常重要的分布,即Poisson分布.
 
-> 若$\lim_{n \to \infty} = \lambda$, 则
+> 若$\lim_{n \to \infty} np_n = \lambda$, 则
 > $$\lim_{n \to \infty} C_{n}^{k}p_{n}^{k}q_{n}^{n−k} = \frac{\lambda^{k}}{k!}e^{−\lambda}, \forall k = 0, 1, 2, \dots$$
 > 其中$q_n =1 − p_n$.  
 
@@ -487,6 +586,8 @@ $$\Omega = \{0, 1, \dots\}$$
 $$P(k) = \frac{\lambda^{k}}{k!}  e^{-\lambda}$$
 这就引导出可列概型的概念.
 
+### 2.9.1 可列概型的概率
+
 > 设一个试验可能的结果有可列个: 
 > $$\Omega=\{\omega_1, \omega_2, \dots\}$$
 > 设$\omega_i$出现的概率为 $p_i, 0 < p_i <1, \sum_{i=1}^{\infty} p_i = 1$. 令
@@ -495,8 +596,7 @@ $$P(k) = \frac{\lambda^{k}}{k!}  e^{-\lambda}$$
 > $$P(A):= \sum_{\omega \in A} P(\omega)$$
 > 则$(\Omega, P)$称为可列概型, $P(A)$称为事件$A$的概率.  
 
-可列概型也有类似于有限概型的基本性质、有条件概率、全概率公式、独立性、随机变量、分布列、分布函数和期望之类的概念,等等.这些结果中主要的不同是原来的有限个样
-本点变成可列个样本点,因而有限和会相应地变成级数.但除此之外,它们没有什么差别,因此我们将有限概型和可列概型统称为**离散概型**.  
+可列概型也有类似于有限概型的基本性质、有条件概率、全概率公式、独立性、随机变量、分布列、分布函数和期望之类的概念, 等等. 这些结果中主要的不同是原来的有限个样本点变成可列个样本点, 因而有限和会相应地变成级数. 但除此之外, 它们没有什么差别, 因此我们将有限概型和可列概型统称为**离散概型**.  
 
 > 概率$P$具有如下性质:   
 > (i)非负性：$\forall A, P(A) \geqslant 0$;  
@@ -522,6 +622,8 @@ $$
 \end{align}
 $$
 
+### 2.9.2 条件概率
+
 条件概率的定义和有限概型时是完全一样的:
 > 设$A$, $B$是两事件, $P(B)>0$.定义:
 > $$P(A \mid B) := \frac{P(AB)}{P(B)}$$
@@ -545,7 +647,7 @@ $$
 > Bayes公式为
 > $$ P(\Omega_j \mid A) = \frac{P(A\Omega_j)}{P(A)} = \frac{P(A \mid \Omega_j)P(\Omega_j)}{\sum_{i=1}^{\infty} P(\Omega_i)P(A \mid \Omega_i)}
 
-#### 2.9.2
+### 2.9.3 分布列、分布函数
 
 在可列概型上也可以定义随机变量.  
 > $\Omega$上的实值函数称为随机变量.  
@@ -579,6 +681,8 @@ $$p_{ij} = p_{\xi,i}^jp_{η,j} = P(\xi = x_i \mid \eta = y_j)P(\eta = y_j)$$
 $$ F(x) := \sum_{i: x_i \leqslant x} p_i = \sum_{\omega:\xi(\omega) \leqslant x} P(\omega)$$  
 显然, F是定义在R上的右连续函数, 且它和分布列是相互唯一确定的.  
 
+### 2.9.4 期望、方差
+
 像有限概型一样, 随机变量$\xi$的期望定义为其平均值. 但这时涉及到无穷项级数的求和, 因此有一个收敛性问题.为此,我们将ξ的正部和负部分开考虑,即分别定义: 
 $$ \mathbb{E}[\xi^+] = \sum_{\omega \in \Omega} \xi^+(\omega)P(\omega)$$
 $$ \mathbb{E}[\xi^-] = \sum_{\omega \in \Omega} \xi^-(\omega)P(\omega)$$
@@ -591,16 +695,127 @@ $$ \mathbb{E}[\xi] = \sum_{\omega \in \Omega} \xi(\omega)P(\omega)$$
 
 当$\mathbb{E}[\xi^+]$与$\mathbb{E}[\xi^-]$均为无限时, 差式$\mathbb{E}[\xi^-]$没有意义, 此时称$\xi$没有期望.  
 当可积时,期望有下列基本性质:
-- (i)和概率的关联性: 若$A \subset \Omega$,则
-E[1A]=P(A);
- (ii)单调性:
- ξ⩽η=⇒E[ξ]⩽E[η];
- (iii)线性性:设a,b为常数,则
-E[aξ+bη]=aE[ξ]+bE[η];
- (iv)若ξ的分布列为{(xi,pi),i=1,2,···},则ξ可积的充要条件是∞
- i=1
- |xi|pi<∞,且此时
-有
-E[ξ]=
- i
- xipi
+- (i)和概率的关联性:若$A \subset \Omega$,则$\mathbb{E}[I_A] = P(A)$;  
+- (ii)单调性: $\xi \leqslant \eta \Rightarrow \mathbb{E}[\xi] \leqslant \mathbb{E}[\eta]$;
+- (iii)线性性:设$a,b$为常数,则$\mathbb{E}[a\xi+b\eta] = a\mathbb{E}[\xi]+b\mathbb{E}[\eta]$;  
+- (iv)若$\xi$的分布列为$\{(x_i,p_i), i=1,2,\dots\}$,则$\xi$可积的充要条件是$$\sum_{i=1}^{\infty} \lvert x_i \rvert p_i < \infty$$
+且此时有$$\mathbb{E}[\xi] = \sum_{i=1}^{\infty} x_i p_i$$
+
+证明. (i)$\mathbb{E}[I_A] = \sum_{\omega \in A} P(\omega) = P(A)$  
+(ii) $\mathbb{E}[\xi] = \sum_{\omega} \xi(\omega) P(\omega) \leqslant \sum_{\omega} \eta(\omega) P(\omega) = \mathbb{E}[\eta]$  
+(iii)$\mathbb{E}[a\xi+b\eta] = \sum_{\omega}(a\xi(\omega)+b\eta(\omega))P(\omega) = a\sum_{\omega}\xi(\omega)P(\omega)+b\sum_{\omega}\eta(\omega)P(\omega) = a\mathbb{E}[\xi]+b\mathbb{E}[\eta]$  
+(iv)由于正项级数可任意交换求和顺序,故有
+$$\sum_{\omega} \lvert \xi(\omega) \rvert P(\omega) = \sum_{i} \lvert x_i \rvert p_i$$
+而当它们有限时,有
+$$
+\begin{align}
+\mathbb{E}[\xi] &= \sum_{\omega} \xi(\omega) P(\omega) \notag \\
+&= \sum_{i} \sum_{\omega:\xi(\omega)=x_i} \xi(\omega) P(\omega) \notag \\
+&= \sum_{i}x_i \sum_{\omega:\xi(\omega)=x_i} P(\omega) \notag \\
+&= \sum_{i}x_i p_i \notag \\
+\end{align}
+$$
+
+要描述一个随机变量的总体状况,除了期望,就是波动了.  
+> $D[\xi]$称为$\xi$的方差.  
+> $$ D[\xi] := \mathbb{E}[(\xi - \mathbb{E}[\xi])^2] = \sum_{\omega} (\xi(\omega) - \mathbb{E}[\xi])^2 P(\omega)$$  
+注意这里涉及的是正项级数,所以它要么收敛,要么发散到无穷大. 后面这种情况我们也依然认为方差存在, 等于无穷大.  
+
+### 2.9.5 期望方差和关于分割的条件期望
+
+设$B$为事件,$P(B)>0$. 将给定$B$时$\xi$的条件期望定义为
+> $$\mathbb{E}[\xi \mid B] := \mathbb{E}[\xi^+ \mid B] − \mathbb{E}[\xi^− \mid B]$$
+只要等式右边的两项中至少一项为有限数,其中  
+$$ \mathbb{E}[\xi^+ \mid B] := \sum_{\omega} \xi^+(\omega) P(\omega \mid B)$$
+$$ \mathbb{E}[\xi^- \mid B] := \sum_{\omega} \xi^-(\omega) P(\omega \mid B)$$  
+当这两项均有限时,易见  
+$$ \mathbb{E}[\xi \mid B] := \sum_{\omega} \xi(\omega) P(\omega \mid B)$$  
+且右边的级数绝对收敛. 显然有
+$$ \mathbb{E}[\xi \mid B] := \sum_{i=1}^{\infty} x_i P(\xi = x_i \mid B) = \sum_{i=1}^{\infty} x_i p_i^B$$  
+
+至于$\mathbb{E}[\xi \mid B]$何时有限, 我们有下面的简单结果:  
+> 若$\mathbb{E}[\xi]$有限, 则对任意$B \subset \Omega, P(B)>0$, $\mathbb{E}[\xi \mid B]$有限, 且
+> $$\mathbb{E}[\xi \mid B] = \frac{E[\xi I_B]}{P(B)}$$  
+
+证明. 因为$P(\omega \mid B) = P(B \mid \omega) \frac{P(\omega)}{P(B)} \leqslant \frac{P(\omega)}{P(B)}$,   
+所以$\mathbb{E}[\lvert \xi \rvert] < \infty$时有
+$$ \mathbb{E}[\lvert \xi \rvert \mid B] = \sum_{\omega \in \Omega}\lvert \xi(\omega) \rvert P(\omega \mid B) \leqslant \sum_{\omega \in \Omega}\lvert \xi(\omega) \rvert \frac{P(\omega)}{P(B)}= \frac{1}{P(B)}\mathbb{E}[\lvert \xi \rvert] < \infty$$ 
+所以$\mathbb{E}[\xi \mid B]$有限, 且
+$$
+\begin{align} 
+\mathbb{E}[\xi \mid B] &= \sum_{\omega \in \Omega}\xi(\omega)P(\omega \mid B) \notag \\
+&= \sum_{\omega \in \Omega}\xi(\omega)P(B \mid \omega) \frac{P(\omega)}{P(B)} \notag \\
+&= \frac{1}{P(B)}\sum_{\omega \in \Omega}\xi(\omega)I_B(\omega) P(\omega) \notag \\
+&= \frac{E[\xi I_B]}{P(B)} \notag \\
+\end{align}
+$$
+
+现在设$\mathscr{P} = \{ \Omega_1, \Omega_2, \dots \}$构成$\Omega$的一个分割, 即
+$$ \sum_{i=1}^{\infty} \Omega_i = \Omega$$
+如同有限概型的情况一样,引进下面的概念是方便的：
+> 定义
+> $$P(A \mid \mathscr{P})(\omega) := \sum_{i=1}^{\infty}P(A \mid \Omega_i)I_{\Omega_i}(\omega) $$
+> $P(A \mid \mathscr{P})$称为给定分割P时的条件概率.  
+
+它的含义是, 当$\omega \in \Omega_i$时, $P(A \mid \mathscr{P})(\omega) = P(A \mid \Omega_i)$, 因此它是一种简单实用的记号,用单独一个记号表示了所有的条件概率$P(A \mid \Omega_i), i=1,2,\dots$. 同时我们知道, $P(\omega \in \Omega_i \mid \mathscr{P}) = P(\Omega_i \mid \mathscr{P})$. 
+
+当$A={\omega^\prime}$时, 我们将$P(A \mid \mathscr{P})(\omega)记为P(\omega^{\prime}, \omega)$. 这样, 当$\omega \in \Omega_i$时, 就有
+$$P(\omega^{\prime}, \omega) = P(\omega^{\prime} \mid \Omega_i)$$
+显然有
+$$P(A \mid \mathscr{P})(\omega) = \sum_{\omega^{\prime}\in A} P(\omega^{\prime}, \omega)$$
+就像有限概型的情况一样, 对固定的$A$, $\omega \mapsto P(A \mid \mathscr{P})(\omega)$是随机变量, 而对于固定的$\omega$, $A \mapsto P(A \mid \mathscr{P})(\omega)$是概率, 它满足非负性、规范性与可列可加性.  
+
+对任何一个随机变量$\xi$,对固定的$\omega$,定义
+> $$\mathbb{E}[\xi \mid \mathscr{P}](\omega) := \mathbb{E}^{P(·,\omega)}[\xi(\omega^{\prime})] := \sum_{\omega^{\prime}} \xi(\omega^{\prime}) P(\omega^{\prime}, \omega) = \sum_{i=1}^{\infty}\mathbb{E}[\xi \mid \Omega_i]I_{\Omega_i}(\omega)
+
+
+关于分割的条件期望依然有一个是否有限的问题.我们有:
+> 若$\mathbb{E}[\lvert\xi\rvert] < \infty$, 则对任意分割$\mathscr{P}$, $\mathbb{E}[\xi\mid\mathscr{P}]$对每一个$\omega$都有限.  
+
+事实上, 当命题的条件满足时, 对$\forall i$, $\mathbb{E}[\xi\mid\Omega_i]$有限, 因此$\mathbb{E}[\xi\mid\mathscr{P}]$有限.  
+
+> 当$\mathbb{E}[\xi]$有限时有
+> $$\mathbb{E}[\mathbb{E}[\xi\mid\mathscr{P}]] = \mathbb{E}[\xi]$$
+> 特别地, 当$\xi := I_A$时, 我们得到全概率公式另一种简洁表达式:
+> $$P(A) = \mathbb{E}[\mathbb{E}[I_A\mid\mathscr{P}]] = \mathbb{E}[P (A\mid\mathscr{P})]$$
+
+证明. 
+$$ \begin{align} 
+\mathbb{E}[\mathbb{E}[\xi\mid\mathscr{P}]] &= \sum_{i=1}^{\infty}\mathbb{E}[\xi\mid\Omega_i]P(\Omega_i) \notag \\
+&= \sum_{i=1}^{\infty}\mathbb{E}[\xi I_{\Omega_i}]\notag \\
+&= \sum_{i=1}^{\infty}\sum_{\omega\in \Omega_i}\xi(\omega)P(\omega)\notag \\
+&= \sum_{\omega\in \Omega}\xi(\omega)P(\omega)\notag \\
+&= \mathbb{E}[\xi]\notag \\
+\end{align}
+$$
+
+整体平均等于局部平均后再加权平均, 这就是上面这个公式背后的简单思想.
+
+### 2.9.6 独立性
+最后我们要谈的是独立性. 这个概念是有限概型时同一概念的自然延申.  
+> (i) 设$A, B$是事件. 若$P(AB) = P(A)P(B)$, 则称$A$与$B$独立.  
+> 设$\{A_i, i \in I\}$是事件族, 其中$I$是任意指标集. 若对任意有限$J \subset I$, 都有
+> $$ P\left( \bigcap_{i\in J} A_i\right) = \prod_{i \in J}P(A_i)$$
+> 则称$\{ A_i, i \in I\}$独立. 
+
+> (ii) 设$\xi, \eta$是随机变量. 如果
+> $$P(\xi = x_i, \eta = y_j ) = P(\xi = x_i) P(\eta = y_j), \forall i, j$$
+> 则称$\xi$与$\eta$独立;  
+> 设$\{\xi_i, i \in I\}$是随机变量族, 其中$I$是任意指标集. 若对任意有限$J \subset I$都有
+> $$P\left(\bigcap_{i \in J} \{\xi_i = x_i\}\right) = \prod_{i \in J}P(\xi_i = x_i)$$
+> 其中$x_i$跑遍$\xi_i$的值域, 则称$\{\xi_i, i \in I\}$独立.  
+
+独立性是概率论中最重要的概念之一. 我们有下列重要结果:  
+> 设$\xi, \eta$独立, 且$\mathbb{E}[\xi], \mathbb{E}[\eta]$存在, 则$\mathbb{E}[\xi\eta]$也存在且
+> $$\mathbb{E}[\xi\eta] = \mathbb{E}[\xi]\mathbb{E}[\eta]$$  
+
+证明. 设$\xi$的分布列为$\{(x_i, p_i)\}$, $\eta$的分布列为$\{(y_j , q_j )\}$. 若$\sum_{\omega} \xi(\omega)\eta(\omega)P(\omega) < \infty$, 则
+$$
+\begin{align}
+\mathbb{E}[\xi\eta] &= \sum_{\omega}\xi(\omega)\eta(\omega)P(\omega) \notag\\
+&= \sum_{i,j}\sum_{\omega: \xi(\omega)=x_i, \eta(\omega)=y_j}\xi(\omega)\eta(\omega)P(\omega) \notag\\
+\end{align}
+$$
+
+
+
