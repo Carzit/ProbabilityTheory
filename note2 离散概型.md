@@ -1,6 +1,12 @@
 # 2 离散概型
 具有可数个基本事件的试验的概率模型, 称为离散概型; 离散概型中, 如果样本点只是有限个, 则称为有限概型; 有限概型中, 如果各样本点出现的概率相等, 则称为古典概型。
 
+
+
+[TOC]
+
+
+
 ## 2.1 古典概型
 ### 2.1.1
 一个试验, 如果有$n$个可能的结果, 而每个结果出现的可能性都是$\frac1n$ , 则称为古典概率模型, 简称古典概型.
@@ -179,9 +185,7 @@ $$P(\xi_1 = j_1, · · · , \xi_m = j_m) = C_{n}^{j_1,···,j_m}p_1^{j_1} \dots
 ## 2.4 条件概率
 ### 2.4.1
 任何概率都是在一定条件下考虑的.  
-设A为事件. 如果我们现在确切地知道A已经发生, 而进一步问在此条件下, 某个事
-件B发生的概率是多少?
-怎么考虑这个问题呢? 
+设A为事件. 如果我们现在确切地知道A已经发生, 而进一步问在此条件下, 某个事件B发生的概率是多少?
 
 我们先看古典概型的情况.这时, 总样本的空间就缩小了,但还是运用一样的原则：用有利事件的样本点数除以总样本点数. 这时条件为A已发生, 同时又要B发生, 所以有利事件的样本点数是$N(AB)$, 而总样本点数是$N(A)$. 从而, 如果我们以$P(B \mid A)$记这个概率的话, 则
 $$P(B \mid A) = \frac{N(AB)}{N(A)}$$
@@ -232,7 +236,7 @@ $$P(BA) = P(A)P(B \mid A)$$
 > 如果样本空间可以分割为若干块
 > $$\Omega = \Omega_1 + \dots + \Omega_n$$
 > 那么对任意事件$A \subset \sum_{i=1}^{n}\Omega_i$, 都有
-> $$ 
+> $$
 >    \begin{align}
 >        P(A) &= P(A\Omega_1) + \dots + P(A\Omega_n) \notag \\
 >        &= P(\Omega_1)P(A \mid \Omega_1) + \dots + P(\Omega_n)P(A \mid \Omega_n) \notag
@@ -365,8 +369,8 @@ $$
 
 ### 2.7.1 $\pi$-类
 
-> 一个非空集类$\mathscr{P}$, 若对交封闭, 即满足
-> $$A, B \in \mathscr{P} \Rightarrow AB \in P$$
+> 一个非空集类$\mathscr{P}$, 若**对交封闭**, 即满足
+> $$A, B \in \mathscr{P} \Rightarrow AB \in \mathscr{P}$$
 > 则称为$\pi$-类.  
 
 下面是几个例子:  
@@ -378,7 +382,7 @@ $$
 
 ### 2.7.2 $\lambda_0$-类
 
-> 一个集类$\mathscr{L}_0$, 若包含$\Omega$且对真差封闭, 即满足
+> 一个集类$\mathscr{L}_0$, 若**包含$\Omega$**且**对真差(-)封闭**, 即满足
 > $$ A, B \in \mathscr{L}_0, A \subset B \Rightarrow B − A \in \mathscr{L}_0 $$
 > 则称为$\lambda_0$-类.  
 
@@ -393,16 +397,16 @@ $\mathscr{L}_0 := \{\Omega, \emptyset, A, B, A^c, B^c\}$. 则$\mathscr{L}_0$为$
 - 设$A$是事件, 令$\mathscr{L}_0 := \{B, B与A独立\}$. 则$\mathscr{L}_0$为$\lambda_0$-类. 这是因为, 当$B, C \in \mathscr{L}_0$且$B \subset C$时, 有$C − B \in \mathscr{L}_0$.
 - 设$P$, $Q$都是定义在$\Omega$的子集上的函数, $P(\Omega) = Q(\Omega)$且$AB = \emptyset \Rightarrow P(A + B) = P(A) + P(B), Q(A + B) = Q(A) + Q(B)$.令$\mathscr{L}_0 := \{A : P(A) = Q(A)\}$. 则$\mathscr{L}_0$为$\lambda_0$-类.  
 
-显然, 若$\mathscr{L}_0$为$\lambda_0$-类, 则$A \in \mathscr{L}_0$时有$A^c = \Omega − A \in \mathscr{L}_0$, 即它对余封闭.
+显然, 若$\mathscr{L}_0$为$\lambda_0$-类, 则$A \in \mathscr{L}_0$时有$A^c = \Omega − A \in \mathscr{L}_0$, 即它**对余封闭**.
 
 我们还可以证明：
-> 一个包含了$\Omega$的集类为$\lambda_0$-类的充要条件是它对不交并及余封闭.  
+> 一个包含了$\Omega$的集类为$\lambda_0$-类的充要条件是它**对不交并(+)及余封闭**.  
 
 必要性：设$\mathscr{L}_0$为$\lambda_0$-类. 设$A, B \in \mathscr{L}_0$且$AB = \emptyset$. 则$B \subset A^c$. 因此
 $$A^cB^c = A^c − B \in \mathscr{L}_0$$
 于是
 $$A + B = (A^cB^c)^c \in \mathscr{L}_0$$
-充分性：设$\mathscr{L}_0$含有$\Omega$且对不交并及余封闭. 设$A, B \in \mathscr{L}_0$且$A \subset B$. 则$AB = \emptyset$. 故
+充分性：设$\mathscr{L}_0$含有$\Omega$且对不交并及余封闭. 设$A, B \in \mathscr{L}_0$且$A \subset B$. 则$AB^c = \emptyset$. 故
 $$B^c + A \in \mathscr{L}_0$$
 因此
 $$B − A = (B^c + A)^c \in \mathscr{L}_0$$
@@ -414,8 +418,8 @@ $$B − A = (B^c + A)^c \in \mathscr{L}_0$$
 
 > 一个集类 $\mathscr{A}$ , 若满足  
 > (i) $\Omega \in \mathscr{A}$ ;  
-> (ii) 对并与余封闭: $A, B \in \mathscr{A} \Rightarrow A \cup B \in \mathscr{A}, A^c \in \mathscr{A}$  
-> 则称为代数.  
+> (ii) **对并与余封闭**: $A, B \in \mathscr{A} \Rightarrow A \cup B \in \mathscr{A}, A^c \in \mathscr{A}$  
+> 则称为**代数**.  
 
 所以$\lambda_0$-类与代数的差别就在于对并封闭的要求中, 有无不交的前提.  
 
@@ -444,6 +448,18 @@ $$B \setminus A = BA^c \in \mathscr{A}$$
 因此$A \cup B = (A^cB^c)^c \in \mathscr{A}$ .  
 所以A 为代数.  
 
+
+
+也就是说，检验一个集类是否为代数，只需要检验:
+
+- 包含$\Omega$
+- 对余封闭
+- 对交封闭
+
+
+
+*代数 = 余 + 并 = 余 + 交 = 差 + 交 = 差 + 并*
+
 显然, 我们还有
 > 一个集类$\mathscr{A}$为代数的充要条件是它既是$\pi$-类又是$\lambda_0$-类.  
 
@@ -461,7 +477,7 @@ $$\mathscr{A_0} = \bigcap \mathscr{A}$$
 
 由此，
 
-> 上面命题中的$\mathscr{A_0}$称为$\mathscr{D}$生成的代数, 记为$\alpha(\mathscr{D})$.  
+> 上面命题中的$\mathscr{A_0}$称为$\mathscr{D}$**生成**的代数, 记为$\alpha(\mathscr{D})$.  
 
 类似地, 我们有:
 > 任给一个集类$\mathscr{D}$, 存在一个$\lambda_0$-类$\mathscr{L}_0$, 使得对任意$\lambda_0$-类$\mathscr{L} \supset \mathscr{D}$, 都有
@@ -780,7 +796,8 @@ $$P(A \mid \mathscr{P})(\omega) = \sum_{\omega^{\prime}\in A} P(\omega^{\prime},
 > $$P(A) = \mathbb{E}[\mathbb{E}[I_A\mid\mathscr{P}]] = \mathbb{E}[P (A\mid\mathscr{P})]$$
 
 证明. 
-$$ \begin{align} 
+$$
+\begin{align} 
 \mathbb{E}[\mathbb{E}[\xi\mid\mathscr{P}]] &= \sum_{i=1}^{\infty}\mathbb{E}[\xi\mid\Omega_i]P(\Omega_i) \notag \\
 &= \sum_{i=1}^{\infty}\mathbb{E}[\xi I_{\Omega_i}]\notag \\
 &= \sum_{i=1}^{\infty}\sum_{\omega\in \Omega_i}\xi(\omega)P(\omega)\notag \\
@@ -788,7 +805,6 @@ $$ \begin{align}
 &= \mathbb{E}[\xi]\notag \\
 \end{align}
 $$
-
 整体平均等于局部平均后再加权平均, 这就是上面这个公式背后的简单思想.
 
 ### 2.9.6 独立性
@@ -816,6 +832,4 @@ $$
 &= \sum_{i,j}\sum_{\omega: \xi(\omega)=x_i, \eta(\omega)=y_j}\xi(\omega)\eta(\omega)P(\omega) \notag\\
 \end{align}
 $$
-
-
 
